@@ -1,9 +1,9 @@
-use this to debug the availability calcualtor code, due to the recen move to atlas I choose to get the data from the queries I use and add the result into a excel file.
-The data is being separate by sheets so each of the followign queires represents a sheet on the excel file
+use this to debug the availability calculator code, due to the recent move to atlas I choose to get the data from the queries I use and add the result into an excel file.
+The data is being separated by sheets so each of the following queries represents a sheet on the Excel file
 
 SQL queries
 ```sql
-shift team snpashots
+shift team snapshots
 SELECT * FROM shift_team_snapshots where id IN (SELECT shift_team_snapshot_id FROM schedule_routes where schedule_id = schedule_id);
 
 route stops
@@ -38,9 +38,9 @@ shift_team attributes
 SELECT a.name, s.shift_team_snapshot_id FROM attributes a JOIN shift_team_attributes s ON a.id = s.attribute_id where s.shift_team_snapshot_id IN (SELECT shift_team_snapshot_id FROM schedule_routes where schedule_id = 33962304);
 ```
 
-the queries are orderder as how the code will map to the calcualtor stuff.
+the queries are ordered as to how the code will map to the calculator stuff.
 
-I add the headers of the query as the first row on the code to klnow which one is whne checkign the indexes
+I added the headers of the query as the first row on the code to know which one is when checking the indexes
 
 the sheet for attributes will look like this
 ```
@@ -49,3 +49,5 @@ radom string | radom id
 radom string | radom id
 radom string | radom id
 ```
+
+as you are not going to evaluate all the visits you may need to get the service duration from our db and the drive times for the service region for the calculator settings on statsig
